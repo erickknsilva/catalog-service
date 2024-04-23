@@ -1,4 +1,4 @@
-# Catalog Service:bookmark_tabs:
+# Catalog Service:bookmark_tabs
 
 #### Descrição	
 
