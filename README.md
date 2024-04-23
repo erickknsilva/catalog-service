@@ -27,18 +27,18 @@ Conforme a análise de cenário realizada para esse serviço, os requsitos ident
 # Funcionalidades
 
 1. **Gerenciamento de Produtos**:
-   - **Criação de Produtos**: Permite adicionar novos produtos ao catálogo, especificando detalhes como nome, descrição, preço, categoria, imagens e estoque.
-   - **Atualização de Produtos**: Permite modificar as informações existentes de produtos, como preço, descrição e disponibilidade.
+   - **Criação de Produtos**: Permite adicionar novos produtos ao catálogo, especificando detalhes como nome, descrição, preço, categoria.
+   - **Atualização de Produtos**: Permite modificar as informações existentes de produtos, como nome, preço, categoria descrição etc...
    - **Exclusão de Produtos**: Permite remover produtos do catálogo conforme necessário.
 2. **Pesquisa e Filtragem de Produtos**:
    - **Pesquisa por Atributos**: Permite buscar produtos com base em atributos específicos, como nome, categoria ou preço.
-   - **Filtragem**: Permite filtrar os resultados da busca por critérios adicionais, como faixa de preço, categoria ou dispon.
-3. **Gerenciamento de Estoque**:
-   - **Verificação de Estoque**: Permite verificar a quantidade disponível de um produto no estoque.
-   - **Atualização de Estoque**: Permite ajustar manualmente os níveis de estoque ou automatizar atualizações com base em vendas ou recebimento de mercadorias.
-4. **Integração com Outros Sistemas**:
-   - **APIs RESTful**: Oferece APIs para integrar o serviço com outros sistemas, como sistemas de pedidos, vendas ou gerenciamento de clientes.
+3. **Integração com Outros Sistemas**:
+   - **APIs REST**: Oferece APIs para integrar o serviço com outros sistemas, como serviço de **pedidos**, **Pagamentos** e **notificação**.
    - **Sincronização com Outros Bancos de Dados**: Permite sincronizar dados de produtos com outros bancos de dados ou serviços.
+4. **Listagem de Produtos**:
+   - **Exibição de Todos os Produtos**: Permite visualizar uma lista completa de todos os produtos disponíveis no catálogo.
+   - **Paginação**: Fornece a capacidade de paginar resultados para evitar sobrecarga de dados.
 5. **Listagem de Produtos**:
    - **Exibição de Todos os Produtos**: Permite visualizar uma lista completa de todos os produtos disponíveis no catálogo.
    - **Paginação**: Fornece a capacidade de paginar resultados para evitar sobrecarga de dados.
+
