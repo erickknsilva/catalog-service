@@ -5,20 +5,26 @@ import com.erickWck.catalogservice.domain.repositorys.ProductRepository;
 import com.erickWck.catalogservice.mapper.ProductMapper;
 import com.erickWck.catalogservice.web.exception.ProductAlreadyExist;
 import com.erickWck.catalogservice.web.exception.ProductNotFoundException;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@RequiredArgsConstructor
 @Service
-@EqualsAndHashCode
 public class ProductService {
 
     private final ProductRepository productRepository;
 
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+
+    @CacheEvict(value = "productService", allEntries = true)
     public ProductMapper addCatalog(final Product product) {
 
         if (productRepository.existsByName(product.name())) {
@@ -27,12 +33,14 @@ public class ProductService {
         return ProductMapper.fromEntityToDto(productRepository.save(product));
     }
 
+    @Cacheable(value = "productService", key = "#id")
     public ProductMapper viewDetailsProduct(Long id) {
         return productRepository.findByIdprod(id)
                 .map(product -> ProductMapper.fromEntityToDto(product))
                 .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
+    @CacheEvict(value = "productService", allEntries = true)
     public ProductMapper editDetailsProduct(Long id, Product product) {
         return productRepository.findById(id)
                 .map(existProd -> {
@@ -47,6 +55,7 @@ public class ProductService {
                 .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
+    @CacheEvict(value = "productService", allEntries = true)
     public void remove(Long id) {
         if (!productRepository.existsByIdprod(id)) {
             throw new ProductNotFoundException(id);
@@ -54,6 +63,7 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    @Cacheable(value = "productService")
     public List<ProductMapper> listAllProduct() {
         return StreamSupport.
                 stream(productRepository.findAll().spliterator(), false)

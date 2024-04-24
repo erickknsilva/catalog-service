@@ -20,6 +20,11 @@ spring:
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
+  redis:
+    connect-timeout: 2s
+    host: localhost
+    port: 6379
+    timeout: 1s
 
 loja:
   greeting: Bem-vindo ao catalogo de Produtos

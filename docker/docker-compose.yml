@@ -26,6 +26,8 @@ services:
     volumes:
       - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
- 
-
-
+#  loja-redis:
+#    image: "redis:7.0"
+#    container_name: "loja-redis"
+#    ports:
+#      - "6379:6379"

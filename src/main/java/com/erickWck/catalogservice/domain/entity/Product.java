@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 
-import java.awt.print.Book;
 import java.math.BigDecimal;
 import java.time.Instant;
 
