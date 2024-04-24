@@ -42,7 +42,11 @@ Conforme a análise de cenário realizada para esse serviço, os requsitos ident
    - **Exibição de Todos os Produtos**: Permite visualizar uma lista completa de todos os produtos disponíveis no catálogo.
    - **Paginação**: Fornece a capacidade de paginar resultados para evitar sobrecarga de dados.
      
-5. **Listagem de Produtos**:
-   - **Exibição de Todos os Produtos**: Permite visualizar uma lista completa de todos os produtos disponíveis no catálogo.
-   - **Paginação**: Fornece a capacidade de paginar resultados para evitar sobrecarga de dados.
+5. **Pedido**:
+   - **Pedido do produto**: Permite o úsuario realizar pedido produtos disponíveis no catálogo.
+
+6. **Pagamento**:
+   - **Pagamento**: Permite o úsuario realizar o pagamento do produto realizado pelo cliente.
+
+     
 
