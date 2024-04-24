@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  catalog-products:
+    depends_on:
+      - loja-postgres
+    image: "catalog-products-services"
+    container_name: "catalog-products"
+    ports:
+      - 9001:9001
+      - 8001:8001
+    environment:
+      - BPL_JVM_THREAD_COUNT=10
+      - BPL_DEBUG_ENABLED=true
+      - BPL_DEBUG_PORT=8001
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://loja-postgres:5432/lojadb_catalog
+
+  loja-postgres:
+    image: "postgres:14.4"
+    container_name: "loja-postgres"
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=user123
+    volumes:
+      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+ 
+
+
