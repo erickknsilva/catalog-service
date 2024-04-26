@@ -1,6 +1,7 @@
 package com.erickWck.catalogservice.web;
 
 import com.erickWck.catalogservice.web.exception.ProductAlreadyExist;
+import com.erickWck.catalogservice.web.exception.ProductListEmptyException;
 import com.erickWck.catalogservice.web.exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -27,6 +28,17 @@ public class ProdutctControlleAdvice {
         return ex.getMessage();
     }
 
+    @ExceptionHandler(ProductListEmptyException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String productListNotFoundException(ProductListEmptyException ex) {
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String nullPointerException(NullPointerException ex) {
+        return ex.getMessage();
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

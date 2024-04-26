@@ -2,6 +2,7 @@ package com.erickWck.catalogservice.domain.entity;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -29,6 +30,7 @@ public record Product(
         String marca,
 
         @NotNull(message = "Insira o preço do produto")
+        @Positive
         BigDecimal preco,
 
 

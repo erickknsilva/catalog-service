@@ -49,4 +49,12 @@ tasks.named('test') {
 
 bootBuildImage {
     imageName = 'catalog-products-services'
+    environment = ["BP_JVM_VERSION": "17.*"]
+    docker {
+        publishRegistry {
+            username = project.findProperty("registryUsername")
+            password = project.findProperty("registryToken")
+            url = project.findProperty("registryUrl")
+        }
+    }
 }

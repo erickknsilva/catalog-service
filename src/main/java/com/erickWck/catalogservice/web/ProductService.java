@@ -2,10 +2,9 @@ package com.erickWck.catalogservice.web;
 
 import com.erickWck.catalogservice.domain.entity.Product;
 import com.erickWck.catalogservice.domain.repositorys.ProductRepository;
-import com.erickWck.catalogservice.mapper.ProductMapper;
+import com.erickWck.catalogservice.mapper.ProductResponse;
 import com.erickWck.catalogservice.web.exception.ProductAlreadyExist;
 import com.erickWck.catalogservice.web.exception.ProductNotFoundException;
-import lombok.EqualsAndHashCode;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -23,25 +22,17 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-
     @CacheEvict(value = "productService", allEntries = true)
-    public ProductMapper addCatalog(final Product product) {
+    public ProductResponse addCatalog(final Product product) {
 
         if (productRepository.existsByName(product.name())) {
             throw new ProductAlreadyExist(product.name());
         }
-        return ProductMapper.fromEntityToDto(productRepository.save(product));
-    }
-
-    @Cacheable(value = "productService", key = "#id")
-    public ProductMapper viewDetailsProduct(Long id) {
-        return productRepository.findByIdprod(id)
-                .map(product -> ProductMapper.fromEntityToDto(product))
-                .orElseThrow(() -> new ProductNotFoundException(id));
+        return ProductResponse.fromEntityToDto(productRepository.save(product));
     }
 
     @CacheEvict(value = "productService", allEntries = true)
-    public ProductMapper editDetailsProduct(Long id, Product product) {
+    public ProductResponse editDetailsProduct(Long id, Product product) {
         return productRepository.findById(id)
                 .map(existProd -> {
                     var productUpdate = new Product(existProd.idprod(),
@@ -50,7 +41,7 @@ public class ProductService {
                             existProd.created_date(),
                             existProd.last_modified_date(),
                             existProd.version());
-                    return ProductMapper.fromEntityToDto(productRepository.save(productUpdate));
+                    return ProductResponse.fromEntityToDto(productRepository.save(productUpdate));
                 })
                 .orElseThrow(() -> new ProductNotFoundException(id));
     }
@@ -64,10 +55,10 @@ public class ProductService {
     }
 
     @Cacheable(value = "productService")
-    public List<ProductMapper> listAllProduct() {
+    public List<ProductResponse> listAllProduct() {
         return StreamSupport.
                 stream(productRepository.findAll().spliterator(), false)
-                .map(ProductMapper::fromEntityToDto)
+                .map(ProductResponse::fromEntityToDto)
                 .collect(Collectors.toList());
     }
 

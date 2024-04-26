@@ -11,6 +11,8 @@ server:
 spring:
   application:
     name: catalog-service
+  main:
+    banner-mode: off
   lifecycle:
     timeout-per-shutdown-phase: 15s
   datasource:
