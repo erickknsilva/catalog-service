@@ -14,9 +14,9 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-    private final ProductQuery productQuery;
+    private final ProductServiceQuery productQuery;
 
-    public ProductController(ProductService productService, ProductQuery productQuery) {
+    public ProductController(ProductService productService, ProductServiceQuery productQuery) {
         this.productService = productService;
         this.productQuery = productQuery;
     }
@@ -24,7 +24,7 @@ public class ProductController {
     @PostMapping("/submit")
     @ResponseStatus(HttpStatus.OK)
     public List<ProductResponse> getSubmitOrders(@Valid @RequestBody OrdersRequest request) {
-        return productQuery.viewDetailsOrders(request.idProducts());
+        return productQuery.viewListAllDetailsProduct(request.idProducts());
     }
 
     @PostMapping
@@ -37,7 +37,7 @@ public class ProductController {
     @GetMapping("/find/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ProductResponse findById(@PathVariable @Valid Long id) {
-        return productQuery.viewDetailsProduct(id);
+        return productQuery.viewDetailsOrders(id);
     }
 
     @GetMapping("/edit/{id}")

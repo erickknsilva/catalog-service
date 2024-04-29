@@ -56,6 +56,13 @@ public record Product(
                 null, null, 0);
     }
 
+    public static Product ofTest(Long id, String name, String modelo,
+                                 String marca, BigDecimal preco, String descricao) {
+
+        return new Product(id, name, modelo, marca, preco, descricao,
+                null, null, 0);
+    }
+
 
 }
 

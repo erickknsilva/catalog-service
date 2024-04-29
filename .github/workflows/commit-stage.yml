@@ -1,0 +1,4 @@
+name: commit-stage
+on: push
+
+jobs:

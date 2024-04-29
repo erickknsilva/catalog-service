@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-  catalog-products:
+  catalog-service:
     depends_on:
       - loja-postgres
-    image: "catalog-products-services"
-    container_name: "catalog-products"
+    image: "ghcr.io/erickknsilva/catalog-service"
+    container_name: "catalog-service"
     ports:
       - 9001:9001
       - 8001:8001

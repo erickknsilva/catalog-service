@@ -13,18 +13,19 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @Service
-public class ProductQuery {
+public class ProductServiceQuery {
 
     private final ProductRepository productRepository;
 
     @Cacheable(value = "productService", key = "#id")
-    public ProductResponse viewDetailsProduct(final Long id) {
+    public ProductResponse viewDetailsOrders(final Long id) {
         return productRepository.findByIdprod(id)
                 .map(product -> ProductResponse.fromEntityToDto(product))
                 .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
-    public List<ProductResponse> viewDetailsOrders(final List<Long> id) {
+
+    public List<ProductResponse> viewListAllDetailsProduct(final List<Long> id) {
 
         List<ProductResponse> collectListOrders = getCollect(id);
 
