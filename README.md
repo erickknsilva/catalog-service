@@ -2,8 +2,6 @@
 
 #### Descrição	
 
-Obs: A imagem desse projeto está temporariamente corrompida, foi feita uma publicação de outro proejeto em cima.
-
 O Catalog Service é um serviço essencial para uma loja de varejo, responsável por gerenciar e fornecer informações sobre produtos disponíveis no catálogo.  O serviço oferece uma API robusta para integração com outros sistemas, facilitando a busca de produtos e oferecendo dados consistentes em tempo real, aprimorando a experiência do cliente, possibilitando buscas eficientes e oferecendo informações precisas sobre os produtos disponíveis.
 
 
